@@ -18,6 +18,7 @@ import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
 import { NoTokensMessage } from "./NoTokensMessage";
+import { ContratMariage } from "./ContratMariage";
 
 // This is the default id used by the Hardhat Network
 const HARDHAT_NETWORK_ID = '31337';
@@ -63,6 +64,20 @@ export class Dapp extends React.Component {
       return <NoWalletDetected />;
     }
 
+    if (window.ethereum != undefined){
+      return <ContratMariage />;
+    }
+
+    if (!this.state.selectedAddress) {
+      return (
+        <ContratMariage 
+        ContratMariage={() => this._ContratMariage()} 
+          networkError={this.state.networkError}
+          dismiss={() => this._dismissNetworkError()}
+        />
+      );
+    }
+
     // The next thing we need to do, is to ask the user to connect their wallet.
     // When the wallet gets connected, we are going to save the users's address
     // in the component's state. So, if it hasn't been saved yet, we have
@@ -105,6 +120,10 @@ export class Dapp extends React.Component {
         </div>
 
         <hr />
+
+        <div className="Contrat">
+          test
+        </div>
 
         <div className="row">
           <div className="col-12">
