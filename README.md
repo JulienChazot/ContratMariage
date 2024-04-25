@@ -88,3 +88,45 @@ If you need help with this project, or with Hardhat in general, please read [thi
 For the latest news about Hardhat, [follow us on Twitter](https://twitter.com/HardhatHQ), and don't forget to star [our GitHub repository](https://github.com/NomicFoundation/hardhat)!
 
 **Happy _building_!**
+
+
+# Mon travail :
+
+En plus du cours et de tous ce qu'on a fait ensemble j'ai fais :
+
+- Développer le front de mon contrat :
+  - Nom prénom des 2 parties 
+  - Date et lieu de naissance des 2 parties
+  - Checkbox pour divorce
+  - Ajouter des enfants au couple
+  - Cocher les enfants pour le donner un héritage
+  - Valider le contrat
+
+- Une erreur est arrivée pour déployer mon contrat sur Sepolia : 
+  - J'ai donc mis mes variables de npx en dur car la version n'arrive pas à récupérer les variables de l'ordinateur.
+  - J'avais toujours une erreur même après avoir configurer mon deploy.js
+  - Il m'informe que 'ether.Signers' n'est pas une fonction mais dans ma console.log(ethers) il me renvoi : "Signer: [Getter]"
+  - Je comprends donc pas pourquoi il ne veux pas déployer
+
+- Erreur provenant de hardhat.config ?
+  - Pour vérifier ça, j'ai mis des consoles.log dans mon hardhat.config.js, ils ressortaient tous, au début comme ça la fin de mon fichier, donc je pense que l'erreur ne vient pas d'ici.
+
+- Mes tentatives de réparation :
+  - J'ai déinstallé node_modules puis réinstallé npm install / sans succès
+  - J'ai tenté de cloner mon projet en réinstallant npm sur me nouveau dossier, j'ai la même erreur
+  - J'ai essayé d'installer ether 5.0, même erreur (npm install ethers@5.0)
+  - J'ai essayé d'installer la dernière version d'ether (npm install ethers@latest)
+  - J'ai tenté de suivre à nouveau le tuto du Read.me dans un nouveau dossier en important mes fichiers. Même erreur
+
+Rappel : 
+On a essayé de débugué tous les deux cet erreur mais on n'a rien trouvé...
+
+Erreur :
+TypeError: ethers.Signers is not a function
+    at main (C:\Users\Julien\Desktop\Isitech\BlockChainHardHat\hardhat-boilerplate\scripts\deploy.js:8:35)
+    at Object.<anonymous> (C:\Users\Julien\Desktop\Isitech\BlockChainHardHat\hardhat-boilerplate\scripts\deploy.js:44:1)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:960:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:23:47

@@ -3,8 +3,8 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract MariageNFT is ERC721 {
-    struct Marriage {
+contract Mariage is ERC721 {
+    struct Mariage {
         string name1;
         string surname1;
         uint256 dateNaissance1;
@@ -16,12 +16,12 @@ contract MariageNFT is ERC721 {
         bool divorce;
     }
 
-    mapping(uint256 => Marriage) public marriages;
+    mapping(uint256 => Mariage) public mariages;
     uint256 public nextTokenId;
 
     constructor() ERC721("MariageNFT", "MFT") {}
 
-    function createMarriage(
+    function createMariage(
         string memory _name1,
         string memory _surname1,
         uint256 _dateNaissance1,
@@ -32,7 +32,7 @@ contract MariageNFT is ERC721 {
         string memory _lieuNaissance2
     ) external returns (uint256) {
         uint256 tokenId = nextTokenId++;
-        marriages[tokenId] = Marriage({
+        mariages[tokenId] = Mariage({
             name1: _name1,
             surname1: _surname1,
             dateNaissance1: _dateNaissance1,
