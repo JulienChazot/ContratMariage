@@ -1,20 +1,34 @@
 require("@nomicfoundation/hardhat-toolbox");
 
 // Ensure your configuration variables are set before executing the script
+const { vars } = require("hardhat/config");
 
+// Go to https://infura.io, sign up, create a new API key
+// in its dashboard, and add it to the configuration variables
+const INFURA_API_KEY = vars.get("INFURA_API_KEY");
+
+const ETHERSCAN_API_KEY = vars.get("ETHERSCAN_API_KEY");
+
+// Add your Sepolia account private key to the configuration variables
+// To export your private key from Coinbase Wallet, go to
+// Settings > Developer Settings > Show private key
+// To export your private key from Metamask, open Metamask and
+// go to Account Details > Export Private Key
+// Beware: NEVER put real Ether into testing accounts
+const SEPOLIA_PRIVATE_KEY = vars.get("SEPOLIA_PRIVATE_KEY");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.24",
   networks: {
     sepolia: {
-      url: `https://sepolia.etherscan.io/address/0x61e2a089f79c8803ad476cc764b581930b180ee4`,
-      accounts: ["1ed6238eb24576dc17f2f60a8f552638123c0f2fb7ec8f35162772c2f5910a95"],
+      url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
+      accounts: [SEPOLIA_PRIVATE_KEY],
     },
   },
   etherscan: {
     apiKey: {
-      sepolia: "NPXV2XVBESXR4EPDNCIUUWFU1325UPIEU2",
+      sepolia: ETHERSCAN_API_KEY,
     },
   },
 };
